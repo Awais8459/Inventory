@@ -41,7 +41,7 @@ router.post('/products', upload.single('image'), async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
+// Count the total products
 router.get('/products/count', async (req, res) => {
   try {
     const count = await Product.countDocuments();

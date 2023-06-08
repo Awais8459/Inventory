@@ -1,10 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
+const cookieParser = require("cookie-parser")
+const bodyParser = require('body-parser');
 const app = express();
-app.use(cors());
 
+app.use(bodyParser.json());
+
+app.use(cookieParser())
 app.use(express.json());
 
 const path = require('path');
@@ -12,8 +15,17 @@ const path = require('path');
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 
 
-const crudTask = require('./crud_task');
-app.use(crudTask);
+const productRoutes = require('./Routes/productRoutes');
+app.use(productRoutes);
+
+app.use(cors({
+    origin: ["http://localhost:3000"],
+    method: ["GET", "POST"],
+    credentials: true,
+}));
+
+const AuthRoutes = require('./Routes/AuthRoutes');
+app.use( AuthRoutes);
 
 
 const port = 4000;

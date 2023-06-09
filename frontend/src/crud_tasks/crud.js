@@ -16,12 +16,12 @@ const Crud = () => {
         navigate("/login");
       } else {
         try {
-          const { data } = await axios.post("http://localhost:4000", {}, { withCredentials: true });
+          const { data } = await axios.post("http://localhost:4000/", {}, { withCredentials: true });
           if (!data.status) {
             removeCookie("jwt");
             navigate("/login");
           } else {
-            toast(`Hi ${data.user}`, { theme: "dark" });
+            // toast(`Hi ${data.user}`, { theme: "dark" });
           }
         } catch (error) {
           console.error(error);
@@ -148,20 +148,11 @@ const Crud = () => {
     }
   };
 
-  // const handleDeleteProduct = async (productId) => {
-  //   try {
-  //     await axios.delete(`http://localhost:4000/products/${productId}`);
-  //     setProducts(products.filter((product) => product._id !== productId));
-  //     setProductCount(productCount - 1);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
   const handleDeleteProduct = async (productId) => {
     try {
       await axios.delete(`http://localhost:4000/products/${productId}`);
       setProducts(products.filter((product) => product._id !== productId));
-      setProductCount(productCount => productCount - 1); // Update productCount state
+      setProductCount(productCount => productCount - 1);
     } catch (error) {
       console.error(error);
     }
@@ -194,6 +185,9 @@ const Crud = () => {
           <input type="file" name="image" onChange={handleFileChange} />
         </div>
         <button onClick={handleCreateProduct}>Create</button>
+        <Link to="/uploadcsv">
+        <button>Click to Add CSV</button>
+        </Link>
       </div>
       
       <div className="card-container">
@@ -203,9 +197,15 @@ const Crud = () => {
             <div>Price: ${product.price}</div>
             <div>Description: {product.description}</div>
             <div>Quantity: {product.quantity}</div>
+
             <div className="image-container">
-              <img src={`http://localhost:4000/uploads/${product.imagePath}`} alt="Product" />
-            </div>
+  {product.imagePath.includes("http") ? (
+    <img src={product.imagePath} alt="Product" />
+  ) : (
+    <img src={`http://localhost:4000/uploads/${product.imagePath}`} alt="Product" />
+  )}
+</div>
+
             <div className="card-buttons">
               <button onClick={() => handleUpdateProduct(product._id)}>Update</button>
               <button onClick={() => handleDeleteProduct(product._id)}>Delete</button>

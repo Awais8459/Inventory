@@ -1,5 +1,3 @@
-I apologize for any confusion caused. Here's an updated version of the README file that focuses on explaining how to run the application rather than providing the clone feature.
-
 # RESTful API with User Authentication, Input Validations, Image Upload, and Stock Management
 
 This repository contains a RESTful API built with Node.js, Express.js, and MongoDB. The API allows you to manage products, perform CRUD operations, implement user authentication, input validations, image upload for products, and stock management.

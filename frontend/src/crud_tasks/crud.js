@@ -186,9 +186,9 @@ const Crud = () => {
             <input type="file" name="image" onChange={handleFileChange} />
           </div>
           <button onClick={handleCreateProduct}>Create</button>
-          {/* <Link to="/uploadcsv">
+          <Link to="/uploadcsv">
             <button>Click to Add CSV</button>
-          </Link> */}
+          </Link>
         </div>
 
         <div className="card-container">

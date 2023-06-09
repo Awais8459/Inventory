@@ -10,13 +10,16 @@ app.use(bodyParser.json());
 app.use(cookieParser())
 app.use(express.json());
 
+const productDetailsRoutes = require("./Routes/product_details.routes")
+app.use("/product-details", productDetailsRoutes)
 
 const corsOptions ={
     origin:'http://localhost:3000', 
-    credentials:true,            //access-control-allow-credentials:true
+    credentials:true,            
     optionSuccessStatus:200
 }
 app.use(cors(corsOptions));
+
 
 const path = require('path');
 

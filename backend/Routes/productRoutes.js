@@ -17,10 +17,6 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// productRoutes.post('/', (req, res) => {
-//   // Handle the POST request to the root URL
-//   res.status(200).json({ message: 'Hello from the backend!' });
-// });
 
 
 // Create a new product with image upload
@@ -138,6 +134,9 @@ productRoutes.delete('/products/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+  productRoutes.post("/");
 });
+
+
 
 module.exports = productRoutes;

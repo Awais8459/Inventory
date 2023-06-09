@@ -12,17 +12,38 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   }
 });
+
 const upload = multer({ storage });
 
+// router.route("/uploadAll").post(upload.single("csvFile"), async (req, res) => {
+//   try {
+//     const jsonArray = await csv().fromFile(req.file.path);
+//     await Product.insertMany(jsonArray);
+//     return res.json("added successfully");
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json(error);
+//   }
+// });
 router.route("/uploadAll").post(upload.single("csvFile"), async (req, res) => {
   try {
+    if (!req.file) {
+      return res.status(400).json({ message: "No file provided" });
+    }
+
     const jsonArray = await csv().fromFile(req.file.path);
+    if (jsonArray.length === 0) {
+      return res.status(400).json({ message: "Empty file" });
+    }
+
     await Product.insertMany(jsonArray);
-    return res.json("added successfully");
+    return res.json("Added successfully");
   } catch (error) {
     console.error(error);
-    res.status(500).json(error);
+    console.error(error);
+    res.status(500).json({ message: "Error uploading file", error });
   }
 });
+
 
 module.exports = router;

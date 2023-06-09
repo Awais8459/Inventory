@@ -10,6 +10,14 @@ app.use(bodyParser.json());
 app.use(cookieParser())
 app.use(express.json());
 
+
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+app.use(cors(corsOptions));
+
 const path = require('path');
 
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
@@ -18,11 +26,12 @@ app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 const productRoutes = require('./Routes/productRoutes');
 app.use(productRoutes);
 
-app.use(cors({
-    origin: ["http://localhost:3000"],
-    method: ["GET", "POST"],
-    credentials: true,
-}));
+// app.use(cors({
+//     origin: "http://localhost:3000",
+//     method: ["GET", "POST"],
+//     credentials: true,
+// }));
+
 
 const AuthRoutes = require('./Routes/AuthRoutes');
 app.use( AuthRoutes);

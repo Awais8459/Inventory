@@ -17,7 +17,10 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-
+// productRoutes.post('/', (req, res) => {
+//   // Handle the POST request to the root URL
+//   res.status(200).json({ message: 'Hello from the backend!' });
+// });
 
 
 // Create a new product with image upload
@@ -120,14 +123,14 @@ productRoutes.delete('/products/:id', async (req, res) => {
     // Delete the product's image file if it exists
     const imagePath = product.imagePath;
     if (imagePath) {
-      const filePath = path.join(__dirname, 'public/uploads', imagePath);
+      const filePath = path.join(__dirname, '../public/uploads', imagePath);
       fs.unlink(filePath, (error) => {
         if (error) {
           console.error('Failed to delete image file:', error);
         }
       });
     }
-
+   
     // Delete the product from the database
     await Product.findByIdAndDelete(productId);
 

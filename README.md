@@ -1,56 +1,114 @@
-# RESTful API with User Authentication, Input Validations, Image Upload, and Stock Management
+# My Awesome RESTful API
 
-This repository contains a RESTful API built with Node.js, Express.js, and MongoDB. The API allows you to manage products, perform CRUD operations, implement user authentication, input validations, image upload for products, and stock management.
+This repository contains a RESTful API built with Node.js, Express.js, and MongoDB. The API provides functionality for managing products, including CRUD operations, input validations, image upload, user authentication, and stock management.
 
-## Prerequisites
+## Getting Started
 
-Make sure you have the following dependencies installed on your machine:
+To use this application, you'll need to clone the repository and install the required dependencies. Then, you can run the application locally.
 
-- Node.js (version X.X.X)
-- MongoDB (version X.X.X)
+### Prerequisites
 
-## Installation
+Before running the application, make sure you have the following prerequisites installed on your machine:
 
-To install the application and its dependencies, follow these steps:
+- Node.js (version X.X.X or higher)
+- MongoDB (version X.X.X or higher)
 
-1. Clone this repository to your local machine.
-2. Navigate to the project directory using the command line or terminal.
-3. Run the following command to install the dependencies:
+### Installation
 
-```
-npm install
-```
+1. Clone the repository to your local machine:
 
-## Configuration
+   ```shell
+   git clone https://github.com/Awais8459/CRUD.git
+   ```
 
-Before running the application, you need to configure some settings.
+2. Navigate to the project's root directory:
 
-1. Open the `config.js` file in the `config` directory.
-2. Modify the `config.js` file to set your MongoDB connection URL, JWT secret key, and any other desired configurations.
+   ```shell
+   cd CRUD
+   ```
+
+3. Install the backend dependencies:
+
+   ```shell
+   npm install
+   ```
+
+4. Navigate to the client directory:
+
+   ```shell
+   cd frontend
+   ```
+
+5. Install the frontend dependencies:
+
+   ```shell
+   npm install
+   ```
+
+### Configuration
+
+Before running the application, you need to configure the database connection and other settings. Follow these steps:
+
+1. Rename the `.env.example` file to `.env`.
+
+2. Open the `.env` file and provide the necessary values for the following variables:
+
+   - `MONGODB_URI`: The connection URL for your MongoDB database.
+   - `JWT_SECRET`: A secret key used for JSON Web Token (JWT) generation.
+
+### Running the Application
+
+To start the application, follow these steps:
+
+1. Navigate to the backend directory to start the backend server:
+
+   ```shell
+   cd backend
+   npm run devStart
+   ```
+
+   This command will start the server and establish a connection to the MongoDB database.
+
+2. In a separate terminal, navigate to the client directory:
+
+   ```shell
+   cd client
+   ```
+
+3. Start the frontend development server:
+
+   ```shell
+   npm start
+   ```
+
+   This command will start the React development server and open the application in your default browser.
 
 ## Usage
 
-To run the application, follow these steps:
+Once the application is up and running, you can use it to perform various operations on products. Here are the available endpoints:
 
-1. Navigate to the project directory using the command line or terminal.
-2. Run the following command to start the application:
+- `GET /products`: Get all products.
+- `GET /products/:id`: Get a specific product by its ID.
+- `POST /products`: Create a new product.
+- `PUT /products/:id`: Update a specific product by its ID.
+- `DELETE /products/:id`: Delete a specific product by its ID.
+- `POST /products/bulk`: Create multiple products from a CSV file.
 
-```
-npm start
-```
-
-The application will start running on `http://localhost:5000`.
-
-Open your web browser and visit `http://localhost:5000` to access the application.
+Please refer to the API documentation for more details on how to interact with these endpoints.
 
 ## Dependencies
 
-The application relies on the following dependencies, which will be automatically installed when you run the `npm install` command:
+The application requires the following dependencies:
+
+### Frontend (React.js)
 
 - axios
 - react-cookie
 - react-router-dom
 - react-toastify
+
+### Backend (Node.js)
+
 - bcrypt
 - body-parser
 - cookie-parser
@@ -64,14 +122,12 @@ The application relies on the following dependencies, which will be automaticall
 - multer
 - nodemon
 
-Make sure to have these dependencies installed before running the application.
+You can install these dependencies by following the installation steps mentioned above.
 
 ## Contributing
 
-Contributions are welcome! If you find any issues or want to add new features, please feel free to submit a pull request.
+Contributions are welcome! If you find any issues or want to enhance the application, please feel free to submit a pull request.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
-
-Please let me know if you need any further assistance!
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). Feel free to use and modify the code as per your needs.

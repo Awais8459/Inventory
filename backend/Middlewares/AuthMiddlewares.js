@@ -1,4 +1,4 @@
-const User = require("../Models/UserModel")
+const User = require("../Models/UserModel");
 const jwt = require("jsonwebtoken");
 
 module.exports.checkUser = (req, res, next) => {
@@ -6,7 +6,7 @@ module.exports.checkUser = (req, res, next) => {
   if (token) {
     jwt.verify(
       token,
-      "kishan sheth super secret key",
+      "iamuser",
       async (err, decodedToken) => {
         if (err) {
           res.json({ status: false });

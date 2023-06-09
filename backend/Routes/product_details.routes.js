@@ -30,7 +30,7 @@ router.route("/uploadAll").post(upload.single("csvFile"), async (req, res) => {
     return res.json("Added successfully");
   } catch (error) {
     console.error(error);
-    // res.status(500).json({ message: "Error uploading file", error });
+
   }
 });
 

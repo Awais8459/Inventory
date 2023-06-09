@@ -10,10 +10,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/uploadcsv" element={<UploadCSV />} />
         <Route path="/" element={<Crud />} />
+        <Route path="/uploadcsv" element={<UploadCSV />} />
+        
       </Routes>
       <ToastContainer />
     </BrowserRouter>

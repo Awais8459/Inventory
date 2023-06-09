@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const UploadCSV = () => {
-  const [file, setFile] = useState(null);
+  const [csvfile, setCsvFile] = useState(null);
 
   // const handleFileChange = (event) => {
-  //   setFile(event.target.files[0]);
+  //   setCsvFile(event.target.files[0]);
   // };
   const handleFileChange = (event) => {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
-      setFile(selectedFile);
+      setCsvFile(selectedFile);
     }
   };
   
@@ -19,7 +19,7 @@ const UploadCSV = () => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append("csvFile", file);
+    formData.append("csvFile", csvfile);
 
     try {
       await axios.post("http://localhost:4000/product-details/uploadAll", formData, {

@@ -45,6 +45,7 @@ const Crud = () => {
   const [updateProductId, setUpdateProductId] = useState('');
   const [selectedFile, setSelectedFile] = useState(null);
   const [productCount, setProductCount] = useState(0);
+  const [csvfile, setCsvFile] = useState(null);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
@@ -160,61 +161,61 @@ const Crud = () => {
 
   return (
     <>
-    <div className="crud-container">
-      <h1>Product List</h1><button onClick={logout}>Logout</button>
-      <h3 className="product-count">Total Products: {productCount}</h3>
-      <div className="input-container">
-        <div className="form-row">
-          <label>Name:</label>
-          <input type="text" name="name" value={newProduct.name} onChange={handleInputChange} />
-        </div>
-        <div className="form-row">
-          <label>Price:</label>
-          <input type="number" name="price" value={newProduct.price} onChange={handleInputChange} />
-        </div>
-        <div className="form-row">
-          <label>Description:</label>
-          <input type="text" name="description" value={newProduct.description} onChange={handleInputChange} />
-        </div>
-        <div className="form-row">
-          <label>Quantity:</label>
-          <input type="number" name="quantity" value={newProduct.quantity} onChange={handleInputChange} />
-        </div>
-        <div className="form-row">
-          <label>Image:</label>
-          <input type="file" name="image" onChange={handleFileChange} />
-        </div>
-        <button onClick={handleCreateProduct}>Create</button>
-        <Link to="/uploadcsv">
-        <button>Click to Add CSV</button>
-        </Link>
-      </div>
-      
-      <div className="card-container">
-        {products.map((product) => (
-          <div key={product._id} className="card">
-            <div>Name: {product.name}</div>
-            <div>Price: ${product.price}</div>
-            <div>Description: {product.description}</div>
-            <div>Quantity: {product.quantity}</div>
-
-            <div className="image-container">
-  {product.imagePath.includes("http") ? (
-    <img src={product.imagePath} alt="Product" />
-  ) : (
-    <img src={`http://localhost:4000/uploads/${product.imagePath}`} alt="Product" />
-  )}
-</div>
-
-            <div className="card-buttons">
-              <button onClick={() => handleUpdateProduct(product._id)}>Update</button>
-              <button onClick={() => handleDeleteProduct(product._id)}>Delete</button>
-            </div>
+      <div className="crud-container">
+        <h1>Product List</h1><button onClick={logout}>Logout</button>
+        <h3 className="product-count">Total Products: {productCount}</h3>
+        <div className="input-container">
+          <div className="form-row">
+            <label>Name:</label>
+            <input type="text" name="name" value={newProduct.name} onChange={handleInputChange} />
           </div>
-        ))}
+          <div className="form-row">
+            <label>Price:</label>
+            <input type="number" name="price" value={newProduct.price} onChange={handleInputChange} />
+          </div>
+          <div className="form-row">
+            <label>Description:</label>
+            <input type="text" name="description" value={newProduct.description} onChange={handleInputChange} />
+          </div>
+          <div className="form-row">
+            <label>Quantity:</label>
+            <input type="number" name="quantity" value={newProduct.quantity} onChange={handleInputChange} />
+          </div>
+          <div className="form-row">
+            <label>Image:</label>
+            <input type="file" name="image" onChange={handleFileChange} />
+          </div>
+          <button onClick={handleCreateProduct}>Create</button>
+          {/* <Link to="/uploadcsv">
+            <button>Click to Add CSV</button>
+          </Link> */}
+        </div>
+
+        <div className="card-container">
+          {products.map((product) => (
+            <div key={product._id} className="card">
+              <div>Name: {product.name}</div>
+              <div>Price: ${product.price}</div>
+              <div>Description: {product.description}</div>
+              <div>Quantity: {product.quantity}</div>
+
+              <div className="image-container">
+                {product.imagePath.includes("http") ? (
+                  <img src={product.imagePath} alt="Product" />
+                ) : (
+                  <img src={`http://localhost:4000/uploads/${product.imagePath}`} alt="Product" />
+                )}
+              </div>
+
+              <div className="card-buttons">
+                <button onClick={() => handleUpdateProduct(product._id)}>Update</button>
+                <button onClick={() => handleDeleteProduct(product._id)}>Delete</button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-    <ToastContainer />
+      <ToastContainer />
     </>
   );
 };

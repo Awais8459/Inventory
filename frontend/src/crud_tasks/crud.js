@@ -148,11 +148,20 @@ const Crud = () => {
     }
   };
 
+  // const handleDeleteProduct = async (productId) => {
+  //   try {
+  //     await axios.delete(`http://localhost:4000/products/${productId}`);
+  //     setProducts(products.filter((product) => product._id !== productId));
+  //     setProductCount(productCount - 1);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
   const handleDeleteProduct = async (productId) => {
     try {
       await axios.delete(`http://localhost:4000/products/${productId}`);
       setProducts(products.filter((product) => product._id !== productId));
-      setProductCount(productCount - 1);
+      setProductCount(productCount => productCount - 1); // Update productCount state
     } catch (error) {
       console.error(error);
     }

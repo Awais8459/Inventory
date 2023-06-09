@@ -56,6 +56,7 @@ export default function Login() {
         <button type="submit">Login</button>
       </form>
       <p>Don't have an account! Register <Link to="/register">here</Link>.</p>
+      <ToastContainer/>
     </div>
 
   )

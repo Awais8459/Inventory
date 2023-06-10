@@ -30,7 +30,7 @@ const UploadCSV = () => {
       alert("CSV file uploaded successfully!");
     } catch (error) {
       console.error(error);
-      alert("Error uploading CSV file.");
+      // alert("Error uploading CSV file.");
     }
   };
 

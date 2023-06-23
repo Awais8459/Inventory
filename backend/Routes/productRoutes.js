@@ -50,6 +50,47 @@ productRoutes.get('/products/count', async (req, res) => {
   }
 });
 
+//////////////////////////////////////////
+productRoutes.get('/products', async (req, res) => {
+  try {
+    const { search } = req.query;
+    let products;
+
+    if (search) {
+      // when i am searching
+      products = await Product.aggregate([
+        {
+          $project: {
+            name: 1,
+            price: { $toString: "$price" },
+            description: 1,
+            quantity: {$toString: "$quantity"}
+          }
+        },
+        {
+          $match: {
+            $or: [
+              { name: { $regex: search, $options: 'i' } },
+              { price: { $regex: search, $options: 'i' } },
+              { description: { $regex: search, $options: 'i' } },
+              { quantity: { $regex: search, $options: 'i' } }
+            ]
+          }
+        }
+      ]);
+    } else {
+      // when I am not searching
+      products = await Product.find();
+    }
+
+    res.json(products);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+////////////////////////////////////////////////
+
 // Get all products
 productRoutes.get('/products', async (req, res) => {
   try {
@@ -134,6 +175,13 @@ productRoutes.delete('/products/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+
+
+  // Get all products or search products by name
+
+
+    
+  
   productRoutes.post("/");
 });
 

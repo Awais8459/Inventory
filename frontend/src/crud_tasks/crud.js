@@ -159,10 +159,15 @@ const Crud = () => {
     }
   };
 
+
+
   return (
     <>
+    <div className='navbar'>
+      <b className='B-heading'>Product List</b>
+    <button className='logout' onClick={logout}>Logout</button>
+    </div>
       <div className="crud-container">
-        <h1>Product List</h1><button onClick={logout}>Logout</button>
         <h3 className="product-count">Total Products: {productCount}</h3>
         <div className="input-container">
           <div className="form-row">

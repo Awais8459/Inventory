@@ -58,5 +58,25 @@
   margin-top: 10px;
 }
 .product-count{
-  margin: 0px;
+  margin-left: 100px;
+  margin-right: auto;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: beige
+}
+
+.logout {
+  margin-left: auto;
+}
+
+.B-heading{
+align-items: center;
+justify-content: center;
+}
+.search{
+  margin-right: 80px ;
 }

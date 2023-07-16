@@ -1,0 +1,36 @@
+Keeping In Mind the previous task of products inventory with bulk upload:
+extend the task by:
+Start from scratch but help can be taken from previous material.
+adding gallery feature to the project where by folders can be created and images ( in future videos ) can be uploaded.
+Gallery:
+1. Bulk upload files to a root folder/directory or nested directory.All this data have to be in db.
+2. Update files by providing move functionality(from folder to folder).
+3. For delete functionality, api can accept multiple ids for file or folders or both. deleting a folder shall delete all folders and files inside that folder.
+4. after bulk uploading the products data,
+
+
+5. each product can be individually updated by attaching image urls to that specific product. incase the images were not added during bulk addition of product data
+also for a specific product, the user can upload an array of images.
+
+
+GET api/products
+POST api/products
+GET api/prdoucts/:id
+DELETE api/products/:id   ---> (that this should be able to delete multpile products)
+PATCH api/products/:id    can be used to update a product ( be it additional images for products or changing price name etc)
+
+GET api/gallery
+POST api/gallery         (can create one folder at a time or bulk upload of images to a folder)
+GET api/gallery:id      (if folder, shall bring all the inside content, otherwise image record details)
+GET api/folder-tree     (shall bring all the folders only, keeping the tree structure uniform with database, as child and parent)
+DELETE api/gallery/:id  (shall be able to accept an array of ids, be it folder or files, and delete them. inside content of folders must also get deleted)
+PACTH api/gallery/:id   (can update the image name, its location(like in which folder), can move the image or folder into or out of other folders, to a specific folder)
+
+Make proper postman documentation for above task.
+
+
+Task 2:
+
+Complete the bootcamp course
+
+

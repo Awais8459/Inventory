@@ -43,8 +43,9 @@ app.use( AuthRoutes);
 const port = 4000;
 
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://iamuser:iamuser@crudtask.7g1bgtp.mongodb.net/products?retryWrites=true&w=majority", {
-    useNewUrlParser: true,
+// mongoose.connect("mongodb+srv://iamuser:iamuser@crudtask.7g1bgtp.mongodb.net/products?retryWrites=true&w=majority", {
+    mongoose.connect("mongodb://127.0.0.1:27017/products?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false", {
+useNewUrlParser: true,
     useUnifiedTopology: true,
 }).then(() => {
     console.log("Connected to MongoDB");

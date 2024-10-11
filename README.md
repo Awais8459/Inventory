@@ -10,8 +10,8 @@ To use this application, you'll need to clone the repository and install the req
 
 Before running the application, make sure you have the following prerequisites installed on your machine:
 
-- Node.js (version X.X.X or higher)
-- MongoDB (version X.X.X or higher)
+- Node.js
+- MongoDB
 
 ### Installation
 
